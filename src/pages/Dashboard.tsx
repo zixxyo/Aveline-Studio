@@ -1,3 +1,4 @@
+import { supabase } from "../lib/supabase";
 import { motion } from 'framer-motion'
 import { DollarSign, Factory, Users } from 'lucide-react'
 import { ActivityIcon, TrendIcon, dashboardActivities, dashboardProducts, dashboardStats } from '../data/dashboard'
