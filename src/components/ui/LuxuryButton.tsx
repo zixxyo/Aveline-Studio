@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import type { HTMLMotionProps } from "framer-motion";
 import { cn } from "../common/utils";
+
+interface LuxuryButtonProps extends HTMLMotionProps<"button"> {
+  children: ReactNode;
+  variant?: "primary" | "secondary";
+  className?: string;
+}
 
 export function LuxuryButton({
   children,
   variant = "primary",
   className,
-}: {
-  children: ReactNode;
-  variant?: "primary" | "secondary";
-  className?: string;
-}) {
+  ...props
+}: LuxuryButtonProps) {
   return (
     <motion.button
       whileHover={{ y: -2, scale: 1.01 }}
@@ -22,6 +26,7 @@ export function LuxuryButton({
           : "border border-white/10 bg-white/[0.055] text-zinc-200 hover:border-[#D4AF37]/40 hover:text-white",
         className,
       )}
+      {...props}
     >
       {children}
     </motion.button>

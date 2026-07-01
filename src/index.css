@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
 :root {
+  --color-gold-100: #fff9df;
+  --color-gold-200: #f7e1b5;
+  --color-gold-300: #e7c585;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #c29d30;
+  --color-gold-600: #a98d2a;
+  --color-gold-700: #937b25;
+
   color: #f8f5ee;
   background: #050505;
   font-family:
@@ -37,6 +45,26 @@ input {
 
 button {
   cursor: pointer;
+}
+
+.text-gold-100 {
+  color: var(--color-gold-100);
+}
+
+.text-gold-200 {
+  color: var(--color-gold-200);
+}
+
+.text-gold-300 {
+  color: var(--color-gold-300);
+}
+
+.border-gold-400 {
+  border-color: var(--color-gold-400);
+}
+
+.focus\:border-gold-500:focus {
+  border-color: var(--color-gold-500);
 }
 
 ::selection {

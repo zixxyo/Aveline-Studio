@@ -19,17 +19,27 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
-import type { NavigationItem } from "../types";
+import { NavLink, useLocation } from "react-router-dom"; // Removed Outlet
+import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import { cn } from "../common/utils";
+interface NavigationItem {
+  label: string;
+  icon: LucideIcon;
+  href?: string;
+}
 
+interface AppShellProps {
+  children: ReactNode;
+}
 const sidebarItems: NavigationItem[] = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/" },
   { label: "Products", icon: Package },
   { label: "Manufacturing", icon: Factory },
-  { label: "Formulas", icon: FlaskConical, href: "/formulas" },
+  { label: "Formulas", icon: FlaskConical, href: "/formula-lab" },
   { label: "Inventory", icon: Boxes },
-  { label: "Suppliers", icon: Truck },
+  { label: "Suppliers", icon: Truck, href: "/suppliers" },
+  { label: "Ingredients", icon: Package, href: "/ingredients" }, // Added Ingredients to sidebar
   { label: "Finance", icon: LineChart },
   { label: "Marketing", icon: Megaphone },
   { label: "Documents", icon: FileText },
@@ -234,7 +244,7 @@ function TopNav({ onMenuClick }: { onMenuClick: () => void }) {
   );
 }
 
-export function AppShell() {
+export function AppShell({ children }: AppShellProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -247,7 +257,7 @@ export function AppShell() {
 
       <div className="relative xl:pl-72">
         <TopNav onMenuClick={() => setIsSidebarOpen(true)} />
-        <Outlet />
+        {children}
       </div>
     </main>
   );
