@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { Beaker, ChevronRight } from 'lucide-react'
 import type { Formula } from '../../types'
-import { GlassPanel, StatusPill, cn } from '../ui'
+import { GlassPanel } from "../ui/GlassPanel";
+import { StatusPill } from "../ui/StatusPill";
+import { cn } from "../common/utils";
 
 export function FormulaLibrary({
   formulas,
@@ -36,7 +38,7 @@ export function FormulaLibrary({
               onClick={() => onSelect(formula.id)}
               className={cn(
                 'w-full rounded-[8px] border p-4 text-left transition',
-                isSelected ? 'border-[#D4AF37]/40 bg-[#D4AF37]/10' : 'border-white/10 bg-black/20 hover:border-white/20 hover:bg-white/[0.055]',
+                isSelected ? 'border-[#D4AF37]/40 bg-[#D4AF37]/10' : 'border-white/10 bg-black/20 hover:border-white/20 hover:bg-white/[0.055]'
               )}
             >
               <div className="flex items-start justify-between gap-3">

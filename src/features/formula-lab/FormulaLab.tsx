@@ -1,26 +1,26 @@
-import { motion } from 'framer-motion'
-import { Download, FileInput, Plus } from 'lucide-react'
-import { useMemo, useState } from 'react'
-import { BatchCalculator } from '../components/formula/BatchCalculator'
-import { FormulaAnalytics, IngredientCostBreakdown } from '../components/formula/FormulaAnalytics'
-import { FormulaLibrary } from '../components/formula/FormulaLibrary'
-import { IngredientsTable } from '../components/formula/IngredientsTable'
-import { VersionHistory } from '../components/formula/VersionHistory'
-import { LuxuryButton } from '../components/ui'
-import { formulas } from '../data/formulas'
+import { motion } from "framer-motion";
+import { Download, FileInput, Plus } from "lucide-react";
+import { useMemo, useState } from "react";
+import { BatchCalculator } from "../../components/formula/BatchCalculator";
+import { FormulaAnalytics, IngredientCostBreakdown } from "../../components/formula/FormulaAnalytics";
+import { FormulaLibrary } from "../../components/formula/FormulaLibrary";
+import { IngredientsTable } from "../../components/formula/IngredientsTable";
+import { VersionHistory } from "../../components/formula/VersionHistory";
+import { LuxuryButton } from "../../components/ui/LuxuryButton";
+import { formulas } from "../../data/formulas";
 
 export function FormulaLab() {
-  const [selectedFormulaId, setSelectedFormulaId] = useState(formulas[0].id)
-  const [batchSize, setBatchSize] = useState(formulas[0].batchSizeMl)
+  const [selectedFormulaId, setSelectedFormulaId] = useState(formulas[0].id);
+  const [batchSize, setBatchSize] = useState(formulas[0].batchSizeMl);
   const selectedFormula = useMemo(
     () => formulas.find((formula) => formula.id === selectedFormulaId) ?? formulas[0],
     [selectedFormulaId],
-  )
+  );
 
   function handleSelectFormula(id: string) {
-    const nextFormula = formulas.find((formula) => formula.id === id)
-    setSelectedFormulaId(id)
-    if (nextFormula) setBatchSize(nextFormula.batchSizeMl)
+    const nextFormula = formulas.find((formula) => formula.id === id);
+    setSelectedFormulaId(id);
+    if (nextFormula) setBatchSize(nextFormula.batchSizeMl);
   }
 
   return (
@@ -59,5 +59,5 @@ export function FormulaLab() {
 
       <VersionHistory formula={selectedFormula} />
     </motion.div>
-  )
+  );
 }

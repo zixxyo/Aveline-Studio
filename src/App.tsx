@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { AppShell } from './components/AppShell'
-import { Dashboard } from './pages/Dashboard'
-import { FormulaLab } from './pages/FormulaLab'
+import { AppShell } from './components/layout/AppShell'
+import { Dashboard } from './features/dashboard/Dashboard'
+import { FormulaLab } from './features/formula-lab/FormulaLab'
 
 export default function App() {
   return (

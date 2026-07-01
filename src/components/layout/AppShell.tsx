@@ -16,25 +16,25 @@ import {
   Sparkles,
   Truck,
   X,
-} from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import type { NavigationItem } from '../types'
-import { cn } from './ui'
+} from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import type { NavigationItem } from "../types";
+import { cn } from "../common/utils";
 
 const sidebarItems: NavigationItem[] = [
-  { label: 'Dashboard', icon: LayoutDashboard, href: '/' },
-  { label: 'Products', icon: Package },
-  { label: 'Manufacturing', icon: Factory },
-  { label: 'Formulas', icon: FlaskConical, href: '/formulas' },
-  { label: 'Inventory', icon: Boxes },
-  { label: 'Suppliers', icon: Truck },
-  { label: 'Finance', icon: LineChart },
-  { label: 'Marketing', icon: Megaphone },
-  { label: 'Documents', icon: FileText },
-  { label: 'Settings', icon: Settings },
-]
+  { label: "Dashboard", icon: LayoutDashboard, href: "/" },
+  { label: "Products", icon: Package },
+  { label: "Manufacturing", icon: Factory },
+  { label: "Formulas", icon: FlaskConical, href: "/formulas" },
+  { label: "Inventory", icon: Boxes },
+  { label: "Suppliers", icon: Truck },
+  { label: "Finance", icon: LineChart },
+  { label: "Marketing", icon: Megaphone },
+  { label: "Documents", icon: FileText },
+  { label: "Settings", icon: Settings },
+];
 
 function BrandMark() {
   return (
@@ -47,7 +47,7 @@ function BrandMark() {
         <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Atelier Suite</p>
       </div>
     </div>
-  )
+  );
 }
 
 function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
@@ -70,7 +70,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
                 {item.label}
               </span>
             </motion.button>
-          )
+          );
         }
 
         return (
@@ -83,21 +83,26 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
           >
             <NavLink
               to={item.href}
-              end={item.href === '/'}
+              end={item.href === "/"}
               onClick={onNavigate}
               className={({ isActive }) =>
                 cn(
-                  'group flex items-center justify-between rounded-[8px] px-3 py-3 text-sm transition-colors',
+                  "group flex items-center justify-between rounded-[8px] px-3 py-3 text-sm transition-colors",
                   isActive
-                    ? 'border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]'
-                    : 'text-zinc-500 hover:bg-white/[0.055] hover:text-zinc-100',
+                    ? "border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                    : "text-zinc-500 hover:bg-white/[0.055] hover:text-zinc-100",
                 )
               }
             >
               {({ isActive }) => (
                 <>
                   <span className="flex items-center gap-3">
-                    <item.icon className={cn('h-[18px] w-[18px]', isActive ? 'text-[#D4AF37]' : 'text-zinc-600 group-hover:text-[#D4AF37]')} />
+                    <item.icon
+                      className={cn(
+                        "h-[18px] w-[18px]",
+                        isActive ? "text-[#D4AF37]" : "text-zinc-600 group-hover:text-[#D4AF37]",
+                      )}
+                    />
                     {item.label}
                   </span>
                   {isActive && <ChevronRight className="h-4 w-4 text-[#D4AF37]" />}
@@ -105,10 +110,10 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
               )}
             </NavLink>
           </motion.div>
-        )
+        );
       })}
     </nav>
-  )
+  );
 }
 
 function DesktopSidebar() {
@@ -131,7 +136,7 @@ function DesktopSidebar() {
         <p className="text-xs leading-5 text-zinc-500">GMP documentation, batch records, and supplier approvals are synchronized.</p>
       </div>
     </motion.aside>
-  )
+  );
 }
 
 function MobileSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -149,14 +154,18 @@ function MobileSidebar({ open, onClose }: { open: boolean; onClose: () => void }
           />
           <motion.aside
             className="fixed inset-y-0 left-0 z-50 flex w-[min(86vw,320px)] flex-col border-r border-white/10 bg-[#050505]/95 p-5 shadow-[30px_0_90px_rgba(0,0,0,0.55)] backdrop-blur-2xl xl:hidden"
-            initial={{ x: '-100%' }}
+            initial={{ x: "-100%" }}
             animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
+            exit={{ x: "-100%" }}
             transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="mb-8 flex items-center justify-between gap-3 px-2 pt-2">
               <BrandMark />
-              <button className="grid h-9 w-9 place-items-center rounded-[8px] border border-white/10 bg-white/[0.055] text-zinc-300" onClick={onClose} aria-label="Close menu">
+              <button
+                className="grid h-9 w-9 place-items-center rounded-[8px] border border-white/10 bg-white/[0.055] text-zinc-300"
+                onClick={onClose}
+                aria-label="Close menu"
+              >
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -165,12 +174,12 @@ function MobileSidebar({ open, onClose }: { open: boolean; onClose: () => void }
         </>
       )}
     </AnimatePresence>
-  )
+  );
 }
 
 function TopNav({ onMenuClick }: { onMenuClick: () => void }) {
-  const location = useLocation()
-  const isFormulaLab = location.pathname.startsWith('/formulas')
+  const location = useLocation();
+  const isFormulaLab = location.pathname.startsWith("/formulas");
 
   return (
     <motion.header
@@ -184,10 +193,14 @@ function TopNav({ onMenuClick }: { onMenuClick: () => void }) {
           <div>
             <p className="text-xs uppercase tracking-[0.28em] text-[#D4AF37]">Welcome back, Ziad</p>
             <h1 className="mt-1 text-2xl font-semibold text-white sm:text-3xl">
-              {isFormulaLab ? 'Aveline R&D Operations' : 'Aveline Operations Dashboard'}
+              {isFormulaLab ? "Aveline R&D Operations" : "Aveline Operations Dashboard"}
             </h1>
           </div>
-          <button className="grid h-10 w-10 place-items-center rounded-[8px] border border-white/10 bg-white/[0.055] text-zinc-300 xl:hidden" aria-label="Open menu" onClick={onMenuClick}>
+          <button
+            className="grid h-10 w-10 place-items-center rounded-[8px] border border-white/10 bg-white/[0.055] text-zinc-300 xl:hidden"
+            aria-label="Open menu"
+            onClick={onMenuClick}
+          >
             <Menu className="h-5 w-5" />
           </button>
         </div>
@@ -197,11 +210,14 @@ function TopNav({ onMenuClick }: { onMenuClick: () => void }) {
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
             <input
               className="h-11 w-full rounded-[8px] border border-white/10 bg-white/[0.055] pl-10 pr-4 text-sm text-white outline-none transition focus:border-[#D4AF37]/50 focus:bg-white/[0.075]"
-              placeholder={isFormulaLab ? 'Search ingredients, INCI, formulas' : 'Search batches, formulas, suppliers'}
+              placeholder={isFormulaLab ? "Search ingredients, INCI, formulas" : "Search batches, formulas, suppliers"}
               type="search"
             />
           </label>
-          <button className="relative grid h-11 w-11 place-items-center rounded-[8px] border border-white/10 bg-white/[0.055] text-zinc-300 transition hover:border-[#D4AF37]/40 hover:text-white" aria-label="Notifications">
+          <button
+            className="relative grid h-11 w-11 place-items-center rounded-[8px] border border-white/10 bg-white/[0.055] text-zinc-300 transition hover:border-[#D4AF37]/40 hover:text-white"
+            aria-label="Notifications"
+          >
             <Bell className="h-5 w-5" />
             <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-[#D4AF37] shadow-[0_0_14px_rgba(212,175,55,0.9)]" />
           </button>
@@ -215,11 +231,11 @@ function TopNav({ onMenuClick }: { onMenuClick: () => void }) {
         </div>
       </div>
     </motion.header>
-  )
+  );
 }
 
 export function AppShell() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#050505] text-white">
@@ -234,5 +250,5 @@ export function AppShell() {
         <Outlet />
       </div>
     </main>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Edit3, FlaskConical } from 'lucide-react'
 import type { Formula } from '../../types'
-import { GlassPanel } from '../ui'
+import { GlassPanel } from "../ui/GlassPanel";
 
 export function IngredientsTable({ formula }: { formula: Formula }) {
   return (

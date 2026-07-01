@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { BarChart3, DollarSign, Factory, ShieldCheck, Sparkles, TrendingUp, Truck } from 'lucide-react'
 import type { Formula } from '../../types'
-import { GlassPanel } from '../ui'
+import { GlassPanel } from "../ui/GlassPanel";
 
 const analyticsIcons = [DollarSign, Factory, Sparkles, TrendingUp, Truck, ShieldCheck]
 

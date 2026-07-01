@@ -1,8 +1,9 @@
-import { supabase } from "../lib/supabase";
+import { supabase } from "../../lib/supabase";
 import { motion } from 'framer-motion'
 import { DollarSign, Factory, Users } from 'lucide-react'
-import { ActivityIcon, TrendIcon, dashboardActivities, dashboardProducts, dashboardStats } from '../data/dashboard'
-import { GlassPanel, StatusPill } from '../components/ui'
+import { ActivityIcon, TrendIcon, dashboardActivities, dashboardProducts, dashboardStats } from '../../data/dashboard'
+import { GlassPanel } from "../../components/ui/GlassPanel";
+import { StatusPill } from "../../components/ui/StatusPill";
 
 function StatCard({ stat, index }: { stat: (typeof dashboardStats)[number]; index: number }) {
   return (

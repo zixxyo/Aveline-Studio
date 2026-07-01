@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 import { History } from 'lucide-react'
 import type { Formula } from '../../types'
-import { GlassPanel, StatusPill } from '../ui'
+import { GlassPanel } from "../ui/GlassPanel";
+import { StatusPill } from "../ui/StatusPill";
 
 export function VersionHistory({ formula }: { formula: Formula }) {
   return (
